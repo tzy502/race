@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="model">
+	<class name="BattleLog" table="battlemanager">
+		<id name="key" column="key"><generator class="identity" /></id>
+		<property name="battleuserid1" column="battleuserid1" />
+		<property name="battleuserid2" column="battleuserid2" />
+		<property name="battleusername1" column="battleusername1" />
+		<property name="battleusername2" column="battleusername2" />
+		<property name="whowin" column="whowin" />
+	</class>
+</hibernate-mapping>

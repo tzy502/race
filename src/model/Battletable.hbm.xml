@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="model">
+	<class name="BattleTable" table="battletable">
+		<id name="key" column="key"><generator class="identity" /></id>
+		<property name="userid" column="userid" />
+		<property name="username" column="username" />
+		<property name="raceid" column="raceid" />
+		<property name="win" column="win" />
+		<property name="lose" column="lose" />
+		<property name="battlenum" column="battlenum" />
+		<property name="type" column="type" />
+	</class>
+</hibernate-mapping>
