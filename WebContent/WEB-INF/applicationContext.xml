@@ -5,6 +5,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
 	<!-- 定义一个action action里面有dao包的servie -->
-	<bean id="asd" class="servlet.UserControl"  >
+	<bean id="usercontrol" class="servlet.UserControl"  >
 	</bean>
 </beans>

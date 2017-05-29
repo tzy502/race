@@ -21,7 +21,6 @@ public class UserDAO {
 		return result;
 	}
 	public void register(User user) throws Exception{
-//		session.beginTransaction();
 //		if(user.getUserid()==null){
 //			throw new Exception("�ʺŲ���Ϊ��");
 //		}
