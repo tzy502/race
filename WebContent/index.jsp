@@ -8,7 +8,21 @@
 <title>主页</title>
 </head>
 <body>
-<% User user =(User)session.getAttribute("user"); %>
-name=<%=user.getUsername() %>
+<% User user =(User)session.getAttribute("user"); 
+if(user.getType()==1||user.getType()==0){
+	%>
+欢迎管理员:
+	<% }
+	else{
+		%>
+	欢迎用户:
+		<% 
+	}
+
+%>
+<%=user.getUsername() %>
+
+	<form action="quit.do" method="post"><input type="submit" value="退出"> 
+	</form>
 </body>
 </html>

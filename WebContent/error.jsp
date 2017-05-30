@@ -8,11 +8,17 @@
 <title>错误</title>
 </head>
 <body>
-错误：	<%
+	<%
    String errmsg=(String)request.getAttribute("errormsg");
    if(errmsg!=null){
 	request.removeAttribute("errormsg");
-     out.println(errmsg);
+ //   out.println(errmsg);
+    %>
+  	<script type="text/javascript" language="javascript">
+		alert("<%=errmsg%>");                                            // 弹出错误信息
+		javascript:history.go(-1);                      // 跳转到登录界面
+	</script>	
+<% 
    }
 %>
 </body>

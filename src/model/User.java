@@ -6,8 +6,17 @@ public class User {
 	public String pwd;
 	public String QQ;
 	public String TEL;
+	public int type;
+	//0超管 1管理 2普通人
+	
 	public String getUserid() {
 		return userid;
+	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;

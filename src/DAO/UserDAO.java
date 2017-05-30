@@ -14,26 +14,24 @@ public class UserDAO {
 		org.hibernate.Query qry = session.createQuery("from User where userid=?");
 		qry.setParameter(0, userid);
 		java.util.List list = qry.list();
-		User result=(User)list.get(0);
-		System.out.println(result);
-		System.out.println(result.getUsername()+"来自DAO");
 		session.getTransaction().commit();
-		return result;
+		if(list.size()==0){
+			return null;
+		}
+		else{
+			User result=(User)list.get(0);
+			System.out.println(result);
+			System.out.println(result.getUsername()+"来自DAO");
+			return result;
+		}
+
 	}
-	public void register(User user) throws Exception{
-//		if(user.getUserid()==null){
-//			throw new Exception("�ʺŲ���Ϊ��");
-//		}
-//		if(user.getPwd()==null){
-//			throw new Exception("���벻��Ϊ��");
-//		}
-//		if(user.getUsername()==null){
-//			throw new Exception("��������Ϊ��");
-//		}
+	public void register(User user){
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.save(user);
+		System.out.println("from DAO register");
 		session.getTransaction().commit();
 	}
 	public void modifypwd(User olduser,User newuser)throws Exception {
@@ -60,6 +58,7 @@ public class UserDAO {
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
+		System.out.println("from dao login");
 		org.hibernate.Query qry = session.createQuery("from User where userid=? and pwd=?");
 		qry.setParameter(0, user.getUserid());
 		qry.setParameter(1, user.getPwd());

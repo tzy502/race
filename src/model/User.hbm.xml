@@ -5,13 +5,13 @@
 
 <hibernate-mapping package="model">
 	<class name="User" table="user">
-			<id name="userid" column="userid">
+		<id name="userid" column="userid">
 			<generator class="assigned" />
 		</id>
 		<property name="username" column="username" type="java.lang.String" />
-		<property name="pwd" column="pwd" type="java.lang.String"/>
-		<property name="QQ" column="QQ" type="java.lang.String"/>
-		<property name="TEL" column="TEL" type="java.lang.String"/>
-
+		<property name="pwd" column="pwd" type="java.lang.String" />
+		<property name="QQ" column="QQ" type="java.lang.String" />
+		<property name="TEL" column="TEL" type="java.lang.String" />
+		<property name="type" column="type"  />
 	</class>
 </hibernate-mapping>
