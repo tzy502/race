@@ -21,8 +21,9 @@ if(user.getType()==1||user.getType()==0){
 
 %>
 <%=user.getUsername() %>
-
-	<form action="quit.do" method="post"><input type="submit" value="退出"> 
+	<a href="modifypwd.jsp">修改密码</a>
+	<form action="quit.do" method="post">
+	<input type="submit" value="退出"> 
 	</form>
 </body>
 </html>

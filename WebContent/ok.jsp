@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>成功</title>
 </head>
 <body>
-<font color="green">${username } </font>欢迎你！
-<%=request.getAttribute("usernmae") %>
-<br /><%=request.getAttribute("customer") %>
+  	<script type="text/javascript" language="javascript">
+		alert("成功");                                            // 弹出错误信息
+		window.location='index.jsp' ;                     // 跳转到登录界面
+	</script>	
 </body>
 </html>

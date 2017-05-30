@@ -34,17 +34,7 @@ public class UserDAO {
 		System.out.println("from DAO register");
 		session.getTransaction().commit();
 	}
-	public void modifypwd(User olduser,User newuser)throws Exception {
-//		if(!login(olduser)){
-//			throw new Exception("�������");
-//		}
-		HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
-		session.update(newuser);
-		session.getTransaction().commit();
-	}
-	public void modifyuser(User user)throws Exception {
+	public void modifyuser(User user){
 //		if(Searchuserbyid(user.getUserid())==null){
 //			throw new Exception("�Ҳ���");
 //		}

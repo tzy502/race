@@ -63,13 +63,46 @@ public class UserControl {
 			}
 
 	}
+	@RequestMapping(value = "modifypwd.do", method = RequestMethod.POST)
+	public String modifypwd(HttpServletRequest request,@RequestParam("oldpwd")String oldpwd,
+			@RequestParam("newpwd1")String newpwd1,@RequestParam("newpwd2")String newpwd2){
+		User user=(User) request.getSession().getAttribute("user");
+		if(user.getPwd().equals(oldpwd)){
+			if(newpwd1.equals(newpwd2)){
+				user.setPwd(newpwd1);
+				ud.modifyuser(user);
+				return "ok";
+			}
+			else{
+				try{	
+					throw new Exception("新密码两次不统一");
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+					request.setAttribute("errormsg", e.getMessage());
+					return "error";
+				}
+			}
+		}
+		else{
+			try{	
+				throw new Exception("新旧密码不一样");
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+				request.setAttribute("errormsg", e.getMessage());
+				return "error";
+			}
+		}
+		
+		
+	}
 	@RequestMapping(value = "register.do", method = RequestMethod.POST)
 	public String register(@RequestParam("userid")String userid,@RequestParam("pwd")String pwd
 			,@RequestParam("username")String username,@RequestParam("QQ")String QQ,@RequestParam("TEL")String TEL
 			,HttpServletRequest request){
-
-
-
 		if(userid.isEmpty()==true){
 			try {
 				throw new Exception("请输入帐号");
@@ -128,8 +161,6 @@ public class UserControl {
 		request.getSession().removeAttribute("user");
 		return "login";
 	}
-	//接着写注册！！！！！！！！！！！！！！！！！！！！！！！！！！！
-	//然后是修改密码！！！！！！！！！！！！！！！！！！！！！！
 
 
 
