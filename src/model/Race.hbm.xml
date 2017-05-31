@@ -13,6 +13,5 @@
 		<property name="racestate" column="racestate" />
 		<property name="raceaddress" column="raceaddress" />
 		<property name="introduction" column="introduction" />
-		<property name="raceopendate" column="raceopendate" />
 	</class>
 </hibernate-mapping>

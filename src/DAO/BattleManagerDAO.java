@@ -30,6 +30,7 @@ public class BattleManagerDAO {
 		qry.setParameter(0, raceid);
 		java.util.List list = qry.list();
 		result=list;
+		session.getTransaction().commit();
 		return result;
 	}
 	public List<BattleManager> searchallrace(String userid){
@@ -41,6 +42,7 @@ public class BattleManagerDAO {
 		qry.setParameter(0, userid);
 		java.util.List list = qry.list();
 		result=list;
+		session.getTransaction().commit();
 		return result;
 	}
 	public BattleManager searchdetail(String userid,int raceid){
@@ -53,6 +55,7 @@ public class BattleManagerDAO {
 		qry.setParameter(0, raceid);
 		java.util.List list = qry.list();
 		result=(BattleManager) list.get(0);
+		session.getTransaction().commit();
 		return result;
 	}
 	public void del(BattleManager bm){

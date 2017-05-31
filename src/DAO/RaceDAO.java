@@ -18,39 +18,56 @@ public class RaceDAO {
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		org.hibernate.Query qry = session.createQuery("from race");
-		java.util.List list = qry.list();
-		result=list;
+		org.hibernate.Query qry = session.createQuery("from Race");
+
+		System.out.println("1");
+		result = qry.list();
+		System.out.println("2");
+		session.getTransaction().commit();
+		
 		return result;
 	}
 	public Race searchracebyid(int id){
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		org.hibernate.Query qry = session.createQuery("from race where raceid=?");
+		org.hibernate.Query qry = session.createQuery("from Race where raceid=?");
 		qry.setParameter(0, id);
 		java.util.List list = qry.list();
 		Race result=(Race)list.get(0);
+		session.getTransaction().commit();
 		return result;
 	}
 	public Race searchracebyname(String name){
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		org.hibernate.Query qry = session.createQuery("from race where racename like ?");
+		org.hibernate.Query qry = session.createQuery("from Race where racename like ?");
 		qry.setParameter(0, name);
 		java.util.List list = qry.list();
 		Race result=(Race)list.get(0);
+		session.getTransaction().commit();
 		return result;
 	}
 	public void modifyrace(Race race) throws Exception{
 //		if(searchracebyid(race.getRaceid())==null){
-//				throw new Exception("²éÎÞÊý¾Ý");
+//				throw new Exception("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 //		}
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.update(race);
 		session.getTransaction().commit();
+	}
+	public int searchidbyname(String racename){
+		Object result;
+		HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		org.hibernate.Query qry = session.createQuery("Select max(raceid) from Race where racename like ?");
+		qry.setParameter(0, racename);
+		result=(int) qry.list().get(0);
+		session.getTransaction().commit();
+		return (int)result;
 	}
 }

@@ -1,20 +1,35 @@
 package servlet;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import DAO.BattleManagerDAO;
 import DAO.RaceDAO;
+import model.BattleManager;
 import model.Race;
-
+import model.User;
+@Controller
 public class RaceControl {
 	RaceDAO rd=new RaceDAO();
+	BattleManagerDAO bmd=new BattleManagerDAO();
 //race 的增删改查 全拉  参加 新增管理员 查看以参加人员 写完返回去写用户查看已参加比赛 
+	
+	
 	@RequestMapping(value = "addrace.do", method = RequestMethod.POST)
 	public String addrace(@RequestParam("racename") String racename,@RequestParam("racetype") int racetype
-			,@RequestParam("racestate")String racestate,@RequestParam("introduction")String introduction,@RequestParam("raceaddress")String raceaddress,HttpServletRequest request){
+			,@RequestParam("introduction")String introduction,@RequestParam("raceaddress")String raceaddress,HttpServletRequest request){
+		
+		System.out.println("from addrace control");
 		try {
 			racecheck(racename, racetype, introduction, raceaddress);
 		} catch (Exception e) {
@@ -30,9 +45,24 @@ public class RaceControl {
 		race.setRacetype(racetype);
 		race.setRacestate(1);
 		rd.addrace(race);
+		User user =(User)request.getSession().getAttribute("user");
+		BattleManager bm=new BattleManager();
+		bm.setUserid(user.getUserid());
+		bm.setRaceid(rd.searchidbyname(racename));
+		bm.setIsboss(true);
+		bmd.add(bm);
 		return "ok";
 	}
-	
+	public List<Race> load(){
+		List<Race> listnoopen =new ArrayList<Race>() ;
+		List<Race> listall =rd.load();
+		for(int i=0;i<listall.size();i++){
+			if(listall.get(i).getRacetype()==1){
+				listnoopen.add(listall.get(i));
+			}
+		}
+		return listnoopen;
+	}
 	public boolean racecheck( String racename,int racetype,String introduction,String raceaddress) throws Exception{
 		if(racename.isEmpty()==true){
 			throw new Exception("请输入比赛名");

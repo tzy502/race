@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 @Controller
 public class UserControl {
 	UserDAO ud=new UserDAO();
+	RaceDAO rd=new RaceDAO();
+	BattleManagerDAO bmd=new BattleManagerDAO();
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public String login(@RequestParam("userid")String userid,@RequestParam("pwd")String pwd,Model model,HttpServletRequest request){
 		System.out.println(userid);
@@ -181,7 +183,6 @@ public class UserControl {
 		request.getSession().removeAttribute("user");
 		return "login";
 	}
-
 
 
 }

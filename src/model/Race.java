@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.security.Timestamp;
 
-public class Race {
+public class Race implements Serializable{
 	public int raceid;
 	public String racename;
 	public int racetype;

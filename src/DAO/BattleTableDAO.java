@@ -31,6 +31,7 @@ public class BattleTableDAO {
 		qry.setParameter(0, id);
 		java.util.List list = qry.list();
 		result=list;
+		session.getTransaction().commit();
 		return result;
 	}
 	public BattleTable search(Race id,User userid){
@@ -43,6 +44,7 @@ public class BattleTableDAO {
 		qry.setParameter(1, userid);
 		java.util.List list = qry.list();
 		result=(BattleTable) list.get(0);
+		session.getTransaction().commit();
 		return result;
 	}
 }

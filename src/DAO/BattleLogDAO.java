@@ -19,7 +19,7 @@ public class BattleLogDAO {
 	public void modifylog(BattleLog bl) throws Exception{
 		/*BattleLog bl=searchdetail(race,user1,user2);
 		if(bl==null){
-			throw new Exception("ÔÚ"+race.getRacename()+"±ÈÈüÖÐ"+user1.getUsername()+"ºÍ"+user2.getUsername()+"²¢ÎÞ¶ÔÕ½ÐÅÏ¢");
+			throw new Exception("ï¿½ï¿½"+race.getRacename()+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+user1.getUsername()+"ï¿½ï¿½"+user2.getUsername()+"ï¿½ï¿½ï¿½Þ¶ï¿½Õ½ï¿½ï¿½Ï¢");
 		}*/
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
@@ -37,6 +37,7 @@ public class BattleLogDAO {
 		qry.setParameter(2,user2.getUserid());
 		java.util.List list = qry.list();
 		BattleLog result=(BattleLog)list.get(0);
+		session.getTransaction().commit();
 		return result;
 	}
 	public List<BattleLog> searchbyraceid(int id){
@@ -47,6 +48,7 @@ public class BattleLogDAO {
 		org.hibernate.Query qry = session.createQuery("from battlelog where raceid=?");
 		qry.setParameter(0, id);
 		java.util.List list = qry.list();
+		session.getTransaction().commit();
 		return result;
 	}
 	public List<BattleLog> searchbyuserid(User user){
@@ -58,6 +60,7 @@ public class BattleLogDAO {
 		qry.setParameter(0, user.getUserid());
 		qry.setParameter(1, user.getUserid());
 		java.util.List list = qry.list();
+		session.getTransaction().commit();
 		return result;
 	}
 }

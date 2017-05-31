@@ -7,7 +7,7 @@
 	<!-- 定义一个action action里面有dao包的servie -->
 	<bean id="usercontrol" class="servlet.UserControl"  >
 	</bean>
-	<bean id="racecontrol" class="servlet.RaceControl"  >
+
+		<bean id="racecontrol" class="servlet.RaceControl"  >
 	</bean>
-	
 </beans>
