@@ -98,6 +98,26 @@ public class UserControl {
 		}
 		
 		
+	}	@RequestMapping(value = "modifyuser.do", method = RequestMethod.POST)
+	public String modifyuser(@RequestParam("username")String username,@RequestParam("QQ")String QQ,@RequestParam("TEL")String TEL
+			,HttpServletRequest request){
+		if(username.isEmpty()==true){
+			try {
+				throw new Exception("请输入帐号");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				request.setAttribute("errormsg", e.getMessage());
+				return "error";
+			}
+		}
+		System.out.println("from modifyuser dao");
+		User user =(User) request.getSession().getAttribute("user");
+		user.setQQ(QQ);
+		user.setUsername(username);
+		user.setTEL(TEL);
+		ud.modifyuser(user);
+		return "ok";
 	}
 	@RequestMapping(value = "register.do", method = RequestMethod.POST)
 	public String register(@RequestParam("userid")String userid,@RequestParam("pwd")String pwd
