@@ -5,11 +5,14 @@
 
 <hibernate-mapping package="model">
 	<class name="Race" table="race">
-		<id name="raceid" column="raceid"><generator class="identity" />
+		<id name="raceid" column="raceid">
+			<generator class="identity" />
 		</id>
 		<property name="racename" column="racename" />
 		<property name="racetype" column="racetype" />
 		<property name="racestate" column="racestate" />
+		<property name="raceaddress" column="raceaddress" />
 		<property name="introduction" column="introduction" />
+		<property name="raceopendate" column="raceopendate" />
 	</class>
 </hibernate-mapping>

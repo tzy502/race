@@ -1,14 +1,30 @@
 package model;
 
+import java.security.Timestamp;
+
 public class Race {
 	public int raceid;
 	public String racename;
 	public int racetype;
-	//1 µ¥ÌÔ 2ÈğÊ¿ÂÖ3Ë«°Ü£¨¿¼ÂÇ£©
+	//1å•è´¥ 2åŒè´¥ 3ç‘å£«è½® 4kof 5å¾æœ
 	public int racestate;
-	//1¿ªÊ¼Ç° 2Ò»¿ªÊ¼3½áÊø
+	//1æ²¡å¼€å§‹ 2å¼€å§‹ 3ç»“æŸ 4å–æ¶ˆ
+	public String raceaddress;
 	public String introduction;
+	public Timestamp  raceopendate;
 	
+	public Timestamp getRaceopendate() {
+		return raceopendate;
+	}
+	public void setRaceopendate(Timestamp raceopendate) {
+		this.raceopendate = raceopendate;
+	}
+	public String getRaceaddress() {
+		return raceaddress;
+	}
+	public void setRaceaddress(String raceaddress) {
+		this.raceaddress = raceaddress;
+	}
 	public String getIntroduction() {
 		return introduction;
 	}
