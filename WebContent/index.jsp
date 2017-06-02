@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="model.User"%>
-<%@ page import="model.Race"%>
+<%@ page import="model.*"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="servlet.RaceControl"%>
@@ -11,33 +10,60 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>主页</title>
 </head>
+<%@ include file="title.jsp"%>
 <body>
-	<% User user =(User)session.getAttribute("user"); 
-if(user.getType()==1||user.getType()==0){
-	%>
-	欢迎管理员:
-	<% }
-	else{
-		%>
-	欢迎用户:
-	<% 
-	}
 
-%>
-	<%=user.getUsername() %>
-
-	<a href="modifypwd.jsp">修改密码</a>
-	<a href="modifyuser.jsp">修改个人信息</a>
-	<a href="addrace.jsp">添加比赛</a>
-	<form action="quit.do" method="post">
-		<input type="submit" value="退出">
-	</form>
 	<% List<Race> list =new ArrayList<Race>() ;
 	RaceControl rc=new RaceControl();
 	list=rc.load();
+	
+	String type=null;
+	out.print("现在有的比赛：<br>");
 	if(list.size()!=0){
-		out.print("<tr> <th>asdasdasd </th></td>");
-		out.print("<tr> <th>12312312 </th></td>");
+		%>
+		<table border="1">
+			<tr>				
+				<td>比赛名</td>
+				<td>比赛地址</td>
+				<td>比类型</td>
+				<td>比赛介绍</td>
+				<td>详情</td>
+			</tr>
+		<%
+		for(int i=0;i<list.size();i++){
+			%>
+
+			<tr>
+			<%
+			out.print("<td>"+list.get(i).getRacename()+"</td>");
+			out.print("<td>"+list.get(i).getRaceaddress()+"</td>");
+			switch (list.get(i).getRacetype()){
+			case 1 : {type="单败"; break;}
+			case 2 : {type="双败"; break;}
+			case 3 : {type="瑞士轮"; break;}
+			case 4 : {type="KOF"; break;}
+			case 5 : {type="征服"; break;}
+			}
+			out.print("<td>"+type+"</td>");
+			out.print("<td>"+list.get(i).getIntroduction()+"</td>");
+			%>			
+			<td>
+			<form action="register.do" method="post">
+				<input type="hidden" value= <%=list.get(i).getRaceid()%> name="raceid">
+				<input type="submit" value="详情">
+			</form>
+			
+			</td>
+			</tr>	
+			<%
+		}
+		%>
+		</table>
+		<%
+		
+	}
+	else{
+		out.print("暂无<br>");
 	}
 	%>
 	

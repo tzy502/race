@@ -57,12 +57,26 @@ public class RaceControl {
 		List<Race> listnoopen =new ArrayList<Race>() ;
 		List<Race> listall =rd.load();
 		for(int i=0;i<listall.size();i++){
-			if(listall.get(i).getRacetype()==1){
+			if(listall.get(i).getRacestate()==1){
 				listnoopen.add(listall.get(i));
 			}
 		}
+		
 		return listnoopen;
 	}
+	
+	@RequestMapping(value = "detial.do", method = RequestMethod.POST)
+	public String detialrace(@RequestParam("raceid")int raceid){
+		Race race=rd.searchracebyid(raceid);
+		switch (race.getRacestate()) {
+		case 1:{return "noopenrace"; }
+		case 2:{return "isopenrace"; }
+		case 3:{return "isendrace"; }	
+		}
+		return null;
+		
+	}
+	
 	public boolean racecheck( String racename,int racetype,String introduction,String raceaddress) throws Exception{
 		if(racename.isEmpty()==true){
 			throw new Exception("请输入比赛名");

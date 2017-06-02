@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>添加比赛</title>
 </head>
+<%@ include file="title.jsp"%>
 <body>
 	<form action="addrace.do" method="post">
 		<center>比赛名:<input type="text" name="racename"><br />
@@ -19,6 +20,7 @@
 		</select>  
 		<center>比赛地点:<input type="text" name="raceaddress"><br />
 		<center>比赛介绍:<input type="text" name="introduction" size="70"><br />
+		<center>比赛时间: <input id="" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})" />
 		<center><input type="submit" value="登陆">
 	</form>
 	
