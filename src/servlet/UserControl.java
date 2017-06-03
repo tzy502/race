@@ -1,4 +1,6 @@
 package servlet;
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -125,6 +127,7 @@ public class UserControl {
 	public String register(@RequestParam("userid")String userid,@RequestParam("pwd")String pwd
 			,@RequestParam("username")String username,@RequestParam("QQ")String QQ,@RequestParam("TEL")String TEL
 			,HttpServletRequest request){
+
 		if(userid.isEmpty()==true){
 			try {
 				throw new Exception("请输入帐号");
@@ -183,6 +186,8 @@ public class UserControl {
 		request.getSession().removeAttribute("user");
 		return "login";
 	}
-
+	public void changeutf8(User user){
+		
+	}
 
 }

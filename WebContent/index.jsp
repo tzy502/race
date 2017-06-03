@@ -46,6 +46,8 @@
 			}
 			out.print("<td>"+type+"</td>");
 			out.print("<td>"+list.get(i).getIntroduction()+"</td>");
+			out.print("<td>"+list.get(i).getRaceopendate()+"</td>");
+			
 			%>			
 			<td>
 			<form action="register.do" method="post">

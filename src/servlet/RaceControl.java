@@ -1,7 +1,12 @@
 package servlet;
 
+
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -27,11 +32,13 @@ public class RaceControl {
 	
 	@RequestMapping(value = "addrace.do", method = RequestMethod.POST)
 	public String addrace(@RequestParam("racename") String racename,@RequestParam("racetype") int racetype
-			,@RequestParam("introduction")String introduction,@RequestParam("raceaddress")String raceaddress,HttpServletRequest request){
-		
-		System.out.println("from addrace control");
+			,@RequestParam("introduction")String introduction,@RequestParam("raceaddress")String raceaddress,@RequestParam("raceopendate")String raceopendatestring,HttpServletRequest request){
+//		
+		System.out.println(raceopendatestring+"from addrace control");
+		Timestamp raceopendate = new Timestamp(0);
+		raceopendate=Timestamp.valueOf(raceopendatestring);
 		try {
-			racecheck(racename, racetype, introduction, raceaddress);
+			racecheck(racename, racetype, introduction, raceaddress,raceopendate);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,6 +51,7 @@ public class RaceControl {
 		race.setRacename(racename);
 		race.setRacetype(racetype);
 		race.setRacestate(1);
+		race.setRaceopendate(raceopendate);
 		rd.addrace(race);
 		User user =(User)request.getSession().getAttribute("user");
 		BattleManager bm=new BattleManager();
@@ -77,7 +85,7 @@ public class RaceControl {
 		
 	}
 	
-	public boolean racecheck( String racename,int racetype,String introduction,String raceaddress) throws Exception{
+	public boolean racecheck( String racename,int racetype,String introduction,String raceaddress,Timestamp ts) throws Exception{
 		if(racename.isEmpty()==true){
 			throw new Exception("请输入比赛名");
 		}
@@ -87,6 +95,9 @@ public class RaceControl {
 		if(raceaddress.isEmpty()==true){
 			throw new Exception("请输入比赛地点");
 		}	
+		if(ts==null){
+			throw new Exception("请输出时间");
+		}			
 		return true;
 	}
 }
