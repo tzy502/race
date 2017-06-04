@@ -21,7 +21,7 @@
 		<center>比赛地点:<input type="text" name="raceaddress"><br />
 		<center>比赛介绍:<input type="text" name="introduction" size="70"><br />
 		<center>比赛时间: <input id="" name="raceopendate" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true})" />
-		<center><input type="submit" value="登陆">
+		<center><input type="submit" value="添加">
 	</form>
 	
 </body>

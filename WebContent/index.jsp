@@ -27,6 +27,7 @@
 				<td>比赛地址</td>
 				<td>比类型</td>
 				<td>比赛介绍</td>
+				<td>比赛时间</td>
 				<td>详情</td>
 			</tr>
 		<%
@@ -50,7 +51,7 @@
 			
 			%>			
 			<td>
-			<form action="register.do" method="post">
+			<form action="detial.do" method="post">
 				<input type="hidden" value= <%=list.get(i).getRaceid()%> name="raceid">
 				<input type="submit" value="详情">
 			</form>

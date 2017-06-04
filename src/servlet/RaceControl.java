@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,8 +75,11 @@ public class RaceControl {
 	}
 	
 	@RequestMapping(value = "detial.do", method = RequestMethod.POST)
-	public String detialrace(@RequestParam("raceid")int raceid){
+	public String detialrace(@RequestParam("raceid")int raceid,HttpServletRequest request){
+		HttpSession session = request.getSession();  
+
 		Race race=rd.searchracebyid(raceid);
+		session.setAttribute("race",race);  
 		switch (race.getRacestate()) {
 		case 1:{return "noopenrace"; }
 		case 2:{return "isopenrace"; }

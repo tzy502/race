@@ -26,7 +26,7 @@ public class BattleManagerDAO {
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		org.hibernate.Query qry = session.createQuery("from battlemanager where raceid=?");
+		org.hibernate.Query qry = session.createQuery("from BattleManager where raceid=?");
 		qry.setParameter(0, raceid);
 		java.util.List list = qry.list();
 		result=list;
@@ -38,7 +38,7 @@ public class BattleManagerDAO {
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		org.hibernate.Query qry = session.createQuery("from battlemanager where userid=?");
+		org.hibernate.Query qry = session.createQuery("from BattleManager where userid=?");
 		qry.setParameter(0, userid);
 		java.util.List list = qry.list();
 		result=list;
@@ -50,7 +50,7 @@ public class BattleManagerDAO {
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		org.hibernate.Query qry = session.createQuery("from battlemanager where userid=? and raceid=?");
+		org.hibernate.Query qry = session.createQuery("from BattleManager where userid=? and raceid=?");
 		qry.setParameter(0, userid);
 		qry.setParameter(0, raceid);
 		java.util.List list = qry.list();

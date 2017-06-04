@@ -4,7 +4,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="servlet.RaceControl"%>
-
+<%@ page import="servlet.*"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -33,7 +33,7 @@ if(user.getType()==1||user.getType()==0){
 	<a href="addrace.jsp">添加比赛</a>
 	
 	
-	<a href="addrace.jsp">返回首页</a>
+	<a href="index.jsp">返回首页</a>
 	<form style="margin:0px;display:inline;" action="quit.do" method="post">
 		<input type="submit" value="退出">
 	</form>
