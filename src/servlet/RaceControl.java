@@ -20,17 +20,49 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import DAO.BattleManagerDAO;
+import DAO.BattleTableDAO;
 import DAO.RaceDAO;
 import model.BattleManager;
+import model.BattleTable;
 import model.Race;
 import model.User;
 @Controller
 public class RaceControl {
 	RaceDAO rd=new RaceDAO();
 	BattleManagerDAO bmd=new BattleManagerDAO();
+	BattleTableDAO btd=new BattleTableDAO();
+
 //race 的增删改查 全拉  参加 新增管理员 查看以参加人员 写完返回去写用户查看已参加比赛 
-	
-	
+	@RequestMapping(value = "join.do", method = RequestMethod.POST)
+	public String join(@RequestParam("userid")String userid,@RequestParam("username")String username,@RequestParam("raceid")int raceid,HttpServletRequest request){
+		BattleTable bt=new BattleTable();
+		bt.setRaceid(raceid);
+		bt.setUserid(userid);
+		bt.setUsername(username);
+		bt.setLose(0);
+		bt.setType(0);
+		bt.setWin(0);
+		bt.setBattlenum("0");
+		btd.add(bt);
+		
+		return "ok";
+	}
+	@RequestMapping(value = "battle.do", method = RequestMethod.POST)
+	public String battle(@RequestParam("raceid")int raceid,HttpServletRequest request){
+		Race race=new Race();
+		race=rd.searchracebyid(raceid);
+		List<Race> battle =new ArrayList<Race>() ;
+		Battle bt=new Battle();
+		switch (race.getRacetype()) {
+			case 1:{battle=bt.oneover(raceid);break;}
+			case 2:{break;}
+			case 3:{break;}
+			case 4:{break;}
+			case 5:{break;}
+		}
+		request.getSession().setAttribute("battle", battle);
+		return "openrace";
+	}	
 	@RequestMapping(value = "addrace.do", method = RequestMethod.POST)
 	public String addrace(@RequestParam("racename") String racename,@RequestParam("racetype") int racetype
 			,@RequestParam("introduction")String introduction,@RequestParam("raceaddress")String raceaddress,@RequestParam("raceopendate")String raceopendatestring,HttpServletRequest request){
@@ -77,9 +109,11 @@ public class RaceControl {
 	@RequestMapping(value = "detial.do", method = RequestMethod.POST)
 	public String detialrace(@RequestParam("raceid")int raceid,HttpServletRequest request){
 		HttpSession session = request.getSession();  
-
+		List<BattleTable> result =new ArrayList<BattleTable>();
+		result=btd.loadallplay(raceid);
 		Race race=rd.searchracebyid(raceid);
 		session.setAttribute("race",race);  
+		session.setAttribute("allplay",result);  
 		switch (race.getRacestate()) {
 		case 1:{return "noopenrace"; }
 		case 2:{return "isopenrace"; }

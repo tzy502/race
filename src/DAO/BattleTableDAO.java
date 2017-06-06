@@ -22,13 +22,13 @@ public class BattleTableDAO {
 		session.update(bt);
 		session.getTransaction().commit();
 	}
-	public List<BattleTable> load(Race id){
+	public List<BattleTable> loadallplay(int raceid){
 		List<BattleTable> result =new ArrayList<BattleTable>();
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		org.hibernate.Query qry = session.createQuery("from BattleTable where raceid=?");
-		qry.setParameter(0, id);
+		qry.setParameter(0, raceid);
 		java.util.List list = qry.list();
 		result=list;
 		session.getTransaction().commit();

@@ -12,7 +12,8 @@
 </head>
 <body>
 <% BattleManegerControl bmc=new BattleManegerControl();
-if(bmc.isracemanger(race.getRaceid(), user.getUserid())==true){
+boolean ismanager= bmc.isracemanger(race.getRaceid(), user.getUserid());
+if(ismanager){
 	%>
 
 		<a href="modifyrace.jsp">修改比赛</a>
@@ -21,12 +22,39 @@ if(bmc.isracemanger(race.getRaceid(), user.getUserid())==true){
 	<%
 } %>
 
-
+			<form action="join.do" method="post">
+				<input type="hidden" value= <%=user.getUserid()%> name="userid">
+				<input type="hidden" value= <%=user.getUsername()%> name="username">
+				<input type="hidden" value= <%=race.getRaceid() %> name="raceid">
+				<input type="submit" value="参加">
+			</form>
 	比赛名：<%=race.getRacename() %><br>
 	比赛时间：<%=race.getRaceopendate() %><br>
 	比赛地点：<%=race.getRaceaddress() %><br>
 	比赛介绍：<%=race.getIntroduction() %><br>
 	参与人员：<br>
-	lalala
+	<%List<BattleTable> allplay =(List<BattleTable>)session.getAttribute("allplay"); 
+	System.out.print(allplay.size());
+	if(allplay!=null){
+		%>
+		<table border="1">
+			<tr>	
+				<td>序号</td>			
+				<td>用户名</td>
+			</tr>
+		<%
+		for(int i=0;i<allplay.size();i++){
+			%>
+			<tr>				
+				<td><%=i+1 %></td>
+				<td><%=allplay.get(i).getUsername() %></td>
+			</tr>
+			<%
+		}
+	}
+	
+	
+	%>
+
 </body>
 </html>
