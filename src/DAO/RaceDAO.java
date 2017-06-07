@@ -27,20 +27,7 @@ public class RaceDAO {
 		
 		return result;
 	}
-	public List<Race> loadsigner(int raceid){
-		List<Race> result =new ArrayList<Race>();
-		HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
-		org.hibernate.Query qry = session.createQuery("from Race where lose=0 and raceid=? orderby key");
-		qry.setParameter(0, raceid);
-		System.out.println("1");
-		result = qry.list();
-		System.out.println("2");
-		session.getTransaction().commit();
-		
-		return result;
-	}
+
 	public Race searchracebyid(int id){
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();

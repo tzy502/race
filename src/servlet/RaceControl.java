@@ -33,6 +33,29 @@ public class RaceControl {
 	BattleTableDAO btd=new BattleTableDAO();
 
 //race 的增删改查 全拉  参加 新增管理员 查看以参加人员 写完返回去写用户查看已参加比赛 
+	@RequestMapping(value = "raceing.do", method = RequestMethod.POST)
+	public String raceing(@RequestParam("raceid")int raceid,@RequestParam("totalrace")int totalrace,@RequestParam("lucky")String lucky
+			,HttpServletRequest request){
+		String win;
+		
+		List<BattleTable> result =new ArrayList<BattleTable>();
+		result=(List<BattleTable>)request.getSession().getAttribute("battle");
+		for(int i=1;i<=totalrace;i++){
+			win=request.getParameter("the"+i+"win");
+			if(win==null){
+				try {
+					throw new Exception("第"+i+"轮没有填写结果");
+				} catch (Exception e) {
+					e.printStackTrace();
+					request.setAttribute("errormsg", e.getMessage());
+					return "error";
+				}
+			}
+			
+			System.out.println("第"+i+"把"+win+"win form raceing");
+		}
+		return "openrace";
+	}
 	@RequestMapping(value = "join.do", method = RequestMethod.POST)
 	public String join(@RequestParam("userid")String userid,@RequestParam("username")String username,@RequestParam("raceid")int raceid,HttpServletRequest request){
 		BattleTable bt=new BattleTable();
@@ -43,23 +66,34 @@ public class RaceControl {
 		bt.setType(0);
 		bt.setWin(0);
 		bt.setBattlenum("0");
+		BattleTable result=new BattleTable();
+		result=btd.search(raceid, userid);
+		if(result!=null){
+			try {
+				throw new Exception("已经参加");
+			} catch (Exception e) {
+				e.printStackTrace();
+				request.setAttribute("errormsg", e.getMessage());
+				return "error";
+			}
+		}
 		btd.add(bt);
 		
 		return "ok";
 	}
-	@RequestMapping(value = "battle.do", method = RequestMethod.POST)
 	public String battle(@RequestParam("raceid")int raceid,HttpServletRequest request){
 		Race race=new Race();
 		race=rd.searchracebyid(raceid);
-		List<Race> battle =new ArrayList<Race>() ;
+		List<BattleTable> battle =new ArrayList<BattleTable>() ;
 		Battle bt=new Battle();
 		switch (race.getRacetype()) {
-			case 1:{battle=bt.oneover(raceid);break;}
+			case 1:{battle=btd.loadsigner(raceid);;break;}
 			case 2:{break;}
 			case 3:{break;}
 			case 4:{break;}
 			case 5:{break;}
 		}
+		System.out.println(battle.size());
 		request.getSession().setAttribute("battle", battle);
 		return "openrace";
 	}	
@@ -98,14 +132,13 @@ public class RaceControl {
 		List<Race> listnoopen =new ArrayList<Race>() ;
 		List<Race> listall =rd.load();
 		for(int i=0;i<listall.size();i++){
-			if(listall.get(i).getRacestate()==1){
 				listnoopen.add(listall.get(i));
-			}
+			
 		}
 		
 		return listnoopen;
 	}
-	
+
 	@RequestMapping(value = "detial.do", method = RequestMethod.POST)
 	public String detialrace(@RequestParam("raceid")int raceid,HttpServletRequest request){
 		HttpSession session = request.getSession();  
@@ -116,7 +149,7 @@ public class RaceControl {
 		session.setAttribute("allplay",result);  
 		switch (race.getRacestate()) {
 		case 1:{return "noopenrace"; }
-		case 2:{return "isopenrace"; }
+		case 2:{battle(raceid, request);return "openrace"; }
 		case 3:{return "isendrace"; }	
 		}
 		return null;

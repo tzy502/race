@@ -13,7 +13,8 @@
 		<center>昵称:<input type="text" name="username"><br />
 		<center>QQ:<input type="text" name="QQ"><br />
 		<center>TEL:<input type="text" name="TEL"><br />
-		<center><input type="submit" value="注册"> <input type="reset" value="清空">
+		<center><input type="submit" value="注册"> 
+		<a href="login.jsp"></a>
 	</form>
 </body>
 </html>

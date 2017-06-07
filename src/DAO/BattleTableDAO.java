@@ -34,17 +34,32 @@ public class BattleTableDAO {
 		session.getTransaction().commit();
 		return result;
 	}
-	public BattleTable search(Race id,User userid){
+	public BattleTable search(int raceid,String userid){
 		BattleTable result=new BattleTable();
+		result=null;
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		org.hibernate.Query qry = session.createQuery("from BattleTable where raceid=? and userid=?");
-		qry.setParameter(0, id);
+		qry.setParameter(0, raceid);
 		qry.setParameter(1, userid);
 		java.util.List list = qry.list();
 		result=(BattleTable) list.get(0);
 		session.getTransaction().commit();
+		return result;
+	}
+	public List<BattleTable> loadsigner(int raceid){
+		List<BattleTable> result =new ArrayList<BattleTable>();
+		HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		org.hibernate.Query qry = session.createQuery("from BattleTable where lose=0 and raceid=? order by 'key'");
+		qry.setParameter(0, raceid);
+		System.out.println("From btd");
+		result = qry.list();
+		System.out.println("From btd 2");
+		session.getTransaction().commit();
+		
 		return result;
 	}
 }

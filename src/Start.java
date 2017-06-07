@@ -5,6 +5,7 @@ import DAO.RaceDAO;
 import DAO.UserDAO;
 import model.Race;
 import model.User;
+import servlet.RaceControl;
 
 public class Start {
 
@@ -17,6 +18,7 @@ public class Start {
 		user.setPwd("123");
 		user.setUsername("adsa");
 		ud.register(user);
+		RaceControl rc=new RaceControl();
 	}
 	
 

@@ -13,9 +13,5 @@ public class Battle {
 	RaceDAO rd=new RaceDAO();
 	BattleManagerDAO bmd=new BattleManagerDAO();
 	BattleTableDAO btd=new BattleTableDAO();
-	public List<Race> oneover(int raceid){
-		List<Race> result =new ArrayList<Race>();
-		result=rd.loadsigner(raceid);
-		return result;
-	}
+
 }

@@ -25,9 +25,10 @@
 			<tr>				
 				<td>比赛名</td>
 				<td>比赛地址</td>
-				<td>比类型</td>
+				<td>比赛类型</td>
 				<td>比赛介绍</td>
 				<td>比赛时间</td>
+				<td>比赛状态</td>
 				<td>详情</td>
 			</tr>
 		<%
@@ -48,7 +49,13 @@
 			out.print("<td>"+type+"</td>");
 			out.print("<td>"+list.get(i).getIntroduction()+"</td>");
 			out.print("<td>"+list.get(i).getRaceopendate()+"</td>");
-			
+			String state=null;
+			switch (list.get(i).getRacestate()){
+				case 1 : {state="还未开始"; break;}
+				case 2 : {state="开始"; break;}
+				case 3 : {state="已经结束"; break;}
+			}
+			out.print("<td>"+state+"</td>");
 			%>			
 			<td>
 			<form action="detial.do" method="post">
