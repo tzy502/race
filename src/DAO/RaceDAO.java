@@ -50,7 +50,7 @@ public class RaceDAO {
 		session.getTransaction().commit();
 		return result;
 	}
-	public void modifyrace(Race race) throws Exception{
+	public void modifyrace(Race race){
 //		if(searchracebyid(race.getRaceid())==null){
 //				throw new Exception("��������");
 //		}

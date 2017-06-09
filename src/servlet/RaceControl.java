@@ -38,10 +38,19 @@ public class RaceControl {
 			,HttpServletRequest request){
 		String win;
 		
-		List<BattleTable> result =new ArrayList<BattleTable>();
-		result=(List<BattleTable>)request.getSession().getAttribute("battle");
+		List<BattleTable> allbattle =new ArrayList<BattleTable>();
+		allbattle=(List<BattleTable>)request.getSession().getAttribute("battle");
+		BattleTable user1=new BattleTable();
+		BattleTable user2=new BattleTable();
+		BattleTable luckyplayer=new BattleTable();
+		if(lucky!="-1"){
+			luckyplayer=allbattle.get(allbattle.size()-1);
+			luckyplayer.setWin(luckyplayer.getWin()+1);
+			btd.modify(luckyplayer);
+		}
 		for(int i=1;i<=totalrace;i++){
 			win=request.getParameter("the"+i+"win");
+			int whowin;
 			if(win==null){
 				try {
 					throw new Exception("第"+i+"轮没有填写结果");
@@ -51,9 +60,26 @@ public class RaceControl {
 					return "error";
 				}
 			}
+			else{
+				whowin=Integer.valueOf(win);
+				user1=allbattle.get(0);
+				user2=allbattle.get(1);
+				allbattle.remove(1);
+				allbattle.remove(0);
+				if(whowin==1){
+					user1.setWin(user1.getWin()+1);
+					user2.setLose(user2.getLose()+1);				
+				}
+				else{
+					user1.setWin(user1.getLose()+1);
+					user2.setLose(user2.getWin()+1);	
+				}
+				btd.modify(user1);
+				btd.modify(user2);
+			}
 			
-			System.out.println("第"+i+"把"+win+"win form raceing");
 		}
+		battle(raceid, request);
 		return "openrace";
 	}
 	@RequestMapping(value = "join.do", method = RequestMethod.POST)
@@ -81,7 +107,7 @@ public class RaceControl {
 		
 		return "ok";
 	}
-	public String battle(@RequestParam("raceid")int raceid,HttpServletRequest request){
+	public void battle(int raceid,HttpServletRequest request){
 		Race race=new Race();
 		race=rd.searchracebyid(raceid);
 		List<BattleTable> battle =new ArrayList<BattleTable>() ;
@@ -94,8 +120,14 @@ public class RaceControl {
 			case 5:{break;}
 		}
 		System.out.println(battle.size());
+		if(battle.size()==1){
+			race.setRacestate(3);
+			rd.modifyrace(race);
+			
+		}
 		request.getSession().setAttribute("battle", battle);
-		return "openrace";
+		
+
 	}	
 	@RequestMapping(value = "addrace.do", method = RequestMethod.POST)
 	public String addrace(@RequestParam("racename") String racename,@RequestParam("racetype") int racetype

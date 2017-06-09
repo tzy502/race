@@ -22,6 +22,13 @@ public class BattleTableDAO {
 		session.update(bt);
 		session.getTransaction().commit();
 	}
+	public void addwin(BattleTable bt){
+		HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		session.update(bt);
+		session.getTransaction().commit();
+	}
 	public List<BattleTable> loadallplay(int raceid){
 		List<BattleTable> result =new ArrayList<BattleTable>();
 		HibernateUtil.getSessionFactory().getCurrentSession();
@@ -44,6 +51,11 @@ public class BattleTableDAO {
 		qry.setParameter(0, raceid);
 		qry.setParameter(1, userid);
 		java.util.List list = qry.list();
+		if(list.size()==0){
+			result=null;
+			session.getTransaction().commit();
+			return result;
+		}
 		result=(BattleTable) list.get(0);
 		session.getTransaction().commit();
 		return result;

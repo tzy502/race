@@ -30,7 +30,7 @@ RaceControl rc=new RaceControl();
 List<BattleTable> result =new ArrayList<BattleTable>();
 result=(List<BattleTable>)session.getAttribute("battle");
 boolean flag=false;
-if(result.size()!=0){
+if(result.size()>1){
 	%>
 	<table border="1">
 		<tr>				
@@ -79,14 +79,28 @@ String lucky="-1";
 		<input type="hidden" value= <%=lucky%> name="lucky">
 		<input type="hidden" value= <%=race.getRaceid()%> name="raceid">
 		<% 
-	}
+	}else{
+	%>
+		<br>
+			<input type="hidden" value= <%=round%> name="totalrace">
+		<input type="hidden" value= <%=lucky%> name="lucky">
+		<input type="hidden" value= <%=race.getRaceid()%> name="raceid">
+
+	<%
+}
+	%>				<input type="submit" value="下一场">
+			</form>
+			<% 
+
+}
+else if (result.size()==1){
+	out.print("比赛结束 胜利者"+result.get(0).getUsername());
+	
+
 }
 
 
 %>
-	<br>
-	
-				<input type="submit" value="下一场">
-			</form>
+
 </body>
 </html>

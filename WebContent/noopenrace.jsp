@@ -19,6 +19,13 @@ if(ismanager){
 		<a href="modifyrace.jsp">修改比赛</a>
 		<a href="addmanager.jsp">添加管理员</a>
 		<br>
+			<form action="openrace.do" method="post">
+				<input type="hidden" value= <%=race.getRaceid() %> name="raceid">
+				<input type="submit" value="比赛开始">
+			</form>
+		
+		
+		
 	<%
 } %>
 

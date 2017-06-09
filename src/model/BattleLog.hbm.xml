@@ -5,7 +5,7 @@
 
 <hibernate-mapping package="model">
 	<class name="BattleLog" table="battlemanager">
-		<id name="key" column="key"><generator class="identity" /></id>
+		<id name="keyword" column="keyword"><generator class="identity" /></id>
 		<property name="battleuserid1" column="battleuserid1" />
 		<property name="battleuserid2" column="battleuserid2" />
 		<property name="battleusername1" column="battleusername1" />

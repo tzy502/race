@@ -2,7 +2,7 @@ package model;
 
 public class BattleTable {
 	public String userid;
-	public int key;
+	public int keyword;
 	public String username;
 	public int raceid;
 	public int win;
@@ -53,11 +53,12 @@ public class BattleTable {
 	public void setBattlenum(String battlenum) {
 		this.battlenum = battlenum;
 	}
-	public int getKey() {
-		return key;
+	public int getKeyword() {
+		return keyword;
 	}
-	public void setKey(int key) {
-		this.key = key;
+	public void setKeyword(int keyword) {
+		this.keyword = keyword;
 	}
+
 	
 }

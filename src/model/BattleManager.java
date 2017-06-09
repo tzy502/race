@@ -4,12 +4,13 @@ public class BattleManager {
 	public String userid;
 	public int raceid;
 	public boolean isboss;
-	public int key;
-	public int getKey() {
-		return key;
+	public int keyword;
+	
+	public int getKeyword() {
+		return keyword;
 	}
-	public void setKey(int key) {
-		this.key = key;
+	public void setKeyword(int keyword) {
+		this.keyword = keyword;
 	}
 	public String getUserid() {
 		return userid;
