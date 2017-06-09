@@ -6,5 +6,9 @@
 <h2>要求</h2>
 网页端 ，暂无
 <h2>TO-DO</h2>
-<type="checkbox"  disabled="true"/>美化<br>
- <input type="checkbox" name="optiona" readonly="readonly" />option a
+  ·美化界面（特别重要）<br>
+  ·添加更多赛制（单败完成目前）。目标单败双败瑞士轮KOF征服赛制，最终可以自定义赛制
+  ·管理员操作
+  ·搜索
+  ·筛选
+ 
