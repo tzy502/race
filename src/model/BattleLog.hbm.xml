@@ -4,12 +4,13 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="model">
-	<class name="BattleLog" table="battlemanager">
+	<class name="BattleLog" table="battlelog">
 		<id name="keyword" column="keyword"><generator class="identity" /></id>
 		<property name="battleuserid1" column="battleuserid1" />
 		<property name="battleuserid2" column="battleuserid2" />
 		<property name="battleusername1" column="battleusername1" />
 		<property name="battleusername2" column="battleusername2" />
+		<property name="raceid" column="raceid" />
 		<property name="whowin" column="whowin" />
 	</class>
 </hibernate-mapping>

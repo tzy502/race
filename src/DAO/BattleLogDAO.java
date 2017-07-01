@@ -31,7 +31,7 @@ public class BattleLogDAO {
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		org.hibernate.Query qry = session.createQuery("from battlelog where raceid=? and battleuserid1=? and battleuserid2=?");
+		org.hibernate.Query qry = session.createQuery("from BattleLog where raceid=? and battleuserid1=? and battleuserid2=?");
 		qry.setParameter(0, race.getRaceid());
 		qry.setParameter(1,user1.getUserid());
 		qry.setParameter(2,user2.getUserid());
@@ -45,9 +45,10 @@ public class BattleLogDAO {
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		org.hibernate.Query qry = session.createQuery("from battlelog where raceid=?");
+		org.hibernate.Query qry = session.createQuery("from BattleLog where raceid=?");
 		qry.setParameter(0, id);
-		java.util.List list = qry.list();
+
+		result=(List<BattleLog>)qry.list();
 		session.getTransaction().commit();
 		return result;
 	}
@@ -56,7 +57,7 @@ public class BattleLogDAO {
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session =    HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		org.hibernate.Query qry = session.createQuery("from battlelog where battleuserid1=? or battleuserid2=?");
+		org.hibernate.Query qry = session.createQuery("from BattleLog where battleuserid1=? or battleuserid2=?");
 		qry.setParameter(0, user.getUserid());
 		qry.setParameter(1, user.getUserid());
 		java.util.List list = qry.list();

@@ -12,6 +12,15 @@
    String errmsg=(String)request.getAttribute("errormsg");
    if(errmsg!=null){
 	request.removeAttribute("errormsg");
+	if(errmsg=="请登录"){
+	    %>
+	  	<script type="text/javascript" language="javascript">
+			alert("<%=errmsg%>");                                            // 弹出错误信息
+			window.location.href="login.jsp";                    // 跳转到登录界面
+		</script>	
+	<% 
+	}
+	else{
  //   out.println(errmsg);
     %>
   	<script type="text/javascript" language="javascript">
@@ -20,6 +29,7 @@
 	</script>	
 <% 
    }
+	}
 %>
 </body>
 </html>

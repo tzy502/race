@@ -5,16 +5,38 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link href="css/materialize.css" type="text/css" rel="stylesheet"
+	media="screen,projection" />
+<link href="css/materialize.min.css" type="text/css" rel="stylesheet"
+	media="screen,projection" />
 <title>登录</title>
 </head>
 <body>
 <body>
-	<form action="login.do" method="post">
-		<center>帐号:<input type="text" name="userid"><br />
-		<center>密码:<input type="password" name="pwd"><br />
-		<center><input type="submit" value="登陆"> <input type="button" onclick="window.location.href='register.jsp'" value="注册">
-	</form>
-	
+
+	<div class="row">
+		<form action="login.do" method="post">
+			<div class="row">
+				<div class="input-field col s4 offset-s4">
+						帐号：<input placeholder="请输入帐号" name="userid" id="userid" type="text"class="validate">
+						
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s4 offset-s4">
+					
+						密码：<input placeholder="请输入密码" name="pwd" id="pwd" type="password"
+							class="validate">
+				</div>
+			</div>
+			<center>
+				<input class="waves-effect waves-light btn" type="submit" value="登陆">
+				<input class="waves-effect waves-light btn" type="button"
+					onclick="window.location.href='register.jsp'" value="注册">
+		</form>
+	</div>
 </body>
 
 

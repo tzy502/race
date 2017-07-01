@@ -30,7 +30,9 @@ RaceControl rc=new RaceControl();
 List<BattleTable> result =new ArrayList<BattleTable>();
 result=(List<BattleTable>)session.getAttribute("battle");
 boolean flag=false;
+System.out.print("result"+result.size());
 if(result.size()>1){
+	System.out.print("from jsp");
 	%>
 	<table border="1">
 		<tr>				

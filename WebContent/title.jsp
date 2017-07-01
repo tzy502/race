@@ -5,38 +5,66 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="servlet.RaceControl"%>
 <%@ page import="servlet.*"%>
+<%@ page import="DAO.*"%>
 <html>
 <head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link href="css/materialize.css" type="text/css" rel="stylesheet"
+	media="screen,projection" />
+<link href="css/materialize.min.css" type="text/css" rel="stylesheet"
+	media="screen,projection" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script language="javascript" type="text/javascript" src="js/WdatePicker.js"></script>
 </head>
 
 <body>
-	<img src="title.png"> 
-	<br>
-	<% User user =(User)session.getAttribute("user"); 
-if(user.getType()==1||user.getType()==0){
-	%>
-	欢迎管理员:
-	<% }
-	else{
-		%>
-	欢迎用户:
+<center><img src="title.png"></center>
+	
+	
 	<% 
+	String usertotal=null;
+	User user=null;
+	user =(User)session.getAttribute("user"); 
+	if(user==null){
+		request.setAttribute("errormsg","请登录");
+		%>	
+		<script language="javascript" type="text/javascript">
+		window.location='/login.jsp';
+		</script>
+		<%
+		
+	}
+	else{
+		if(user.getType()==1||user.getType()==0){
+			usertotal="欢迎管理员:";
+		}	
+		else{
+			usertotal="欢迎用户:";	
+		}
+	usertotal=usertotal+user.getUsername();
 	}
 
 %>
-	<%=user.getUsername() %>
 
-	<a href="modifypwd.jsp">修改密码</a>
-	<a href="modifyuser.jsp">修改个人信息</a>
-	<a href="addrace.jsp">添加比赛</a>
+<nav>
+    <div class=" blue lighten-1 nav-wrapper">
+      <a><%=usertotal %></a>	
+      <ul id="nav-mobile" class=" right hide-on-med-and-down">
+        <li><a href="modifypwd.jsp">修改密码</a></li>
+        <li><a href="modifyuser.jsp">修改个人信息</a></li>
+        <li><a href="addrace.jsp">添加比赛</a></li>
+        <li>
+		<form  action="quit.do" method="post">
+			<input class="blue lighten-1 nav-wrapper waves-effect waves-light btn-large" type="submit" value="退出">
+		</form>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
 	
-	
-	<a href="index.jsp">返回首页</a>
-	<form style="margin:0px;display:inline;" action="quit.do" method="post">
-		<input type="submit" value="退出">
-	</form>
+
 	<type>
 	
 	

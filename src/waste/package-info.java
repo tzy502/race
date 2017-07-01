@@ -67,4 +67,10 @@ case 4:{break;}
 case 5:{break;}
 	%>
 	
+	
+			<center>帐号:<input type="text" name="userid"><br />
+		<center>密码:<input type="password" name="pwd"><br />
+	
+	
+	
  */

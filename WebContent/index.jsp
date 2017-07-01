@@ -18,19 +18,28 @@
 	list=rc.load();
 	
 	String type=null;
-	out.print("现在有的比赛：<br>");
+	%>
+	       <div class="row">
+          <div class="col s8  offset-s2">
+	
+	<p>现在有的比赛有:</p>
+	
+	<%
 	if(list.size()!=0){
 		%>
-		<table border="1">
-			<tr>				
-				<td>比赛名</td>
-				<td>比赛地址</td>
-				<td>比赛类型</td>
-				<td>比赛介绍</td>
-				<td>比赛时间</td>
-				<td>比赛状态</td>
-				<td>详情</td>
-			</tr>
+		 <table class="bordered highlight centered responsive-table">
+		  <thead>
+          <tr>
+				<th>比赛名</th>
+				<th>比赛地址</th>
+				<th>比赛类型</th>
+				<th>比赛介绍</th>
+				<th>比赛时间</th>
+				<th>比赛状态</th>
+				<th>详情</th>
+          </tr>
+        </thead>
+        <tbody>
 		<%
 		for(int i=0;i<list.size();i++){
 			%>
@@ -60,7 +69,9 @@
 			<td>
 			<form action="detial.do" method="post">
 				<input type="hidden" value= <%=list.get(i).getRaceid()%> name="raceid">
-				<input type="submit" value="详情">
+				  <button class="btn waves-effect waves-light blue lighten-1" type="submit" name="action">详情
+   					 <i class="material-icons right">send</i>
+  					</button>
 			</form>
 			
 			</td>
@@ -68,7 +79,9 @@
 			<%
 		}
 		%>
+		</tbody>
 		</table>
+		</div>
 		<%
 		
 	}
