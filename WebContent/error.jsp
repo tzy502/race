@@ -16,7 +16,7 @@
 	    %>
 	  	<script type="text/javascript" language="javascript">
 			alert("<%=errmsg%>");                                            // 弹出错误信息
-			window.location.href="login.jsp";                    // 跳转到登录界面
+			window.location.href="/race/login.jsp";                    // 跳转到登录界面
 		</script>	
 	<% 
 	}

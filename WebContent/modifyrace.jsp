@@ -23,7 +23,7 @@
 		 
 		</select>  
 		<center>比赛地点:<input type="text" name="raceaddress"value=<%=race.getRaceaddress() %>><br />
-		<center>比赛介绍:<input type="text" name="introduction" value=<%=race.getIntroduction() %>size="70"><br />
+		<center>比赛介绍:<input type="text" name="introduction" value=<%=race.getIntroduction() %>><br />
 		<center>比赛时间: <input id="" name="raceopendate" class="Wdate"  value=<%=race.getRaceopendate().toString()%> onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',startDate:'<%=race.getRaceopendate().toString() %>',readOnly:true})" />
 		<center><input type="submit" value="登陆">
 	</form>

@@ -14,10 +14,15 @@
 	media="screen,projection" />
 <link href="css/materialize.min.css" type="text/css" rel="stylesheet"
 	media="screen,projection" />
+<script src="js/materialize.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script language="javascript" type="text/javascript" src="js/WdatePicker.js"></script>
-</head>
 
+</head>
 <body>
 <center><img src="title.png"></center>
 	
@@ -67,6 +72,5 @@
 
 	<type>
 	
-	
-	<br>
+	<main>
 </body>

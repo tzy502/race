@@ -8,21 +8,66 @@
 </head>
 <%@ include file="title.jsp"%>
 <body>
+
+<nav>
+    <div class=" grey lighten-1 nav-wrapper">
+      <div class="col s4 offset-s1">
+      	你所在位置：
+        <a href="index.jsp" class="breadcrumb">首页</a>
+        <a href="#" class="breadcrumb">添加比赛</a>
+      </div>
+    </div>
+  </nav>
+  <div class="row">
+  <center>
 	<form action="addrace.do" method="post">
-		<center>比赛名:<input type="text" name="racename"><br />
-		<center>赛制:
-		<select name = "racetype">  
+
+		
+		<div class="row">
+				<div class="input-field col s4 offset-s4">
+						比赛名:<input type="text"  name="racename">						
+				</div>
+			</div>
+						<div class="row">
+							赛制:
+		<div class="row">
+	
+		<select name = "racetype" class="browser-default col s4 offset-s4">  	
+		<option value="" disabled selected></option>
 		  <option value="1">单败</option>  
 		  <option value="2">双败</option>  
 		  <option value="3">瑞士轮</option>
 		 <option value="4">KOF</option>    
 		 <option value="5">征服</option>
 		</select>  
-		<center>比赛地点:<input type="text" name="raceaddress"><br />
-		<center>比赛介绍:<input type="text" name="introduction" size="70"><br />
-		<center>比赛时间: <input id="" name="raceopendate" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true})" />
-		<center><input type="submit" value="添加">
-	</form>
+		
+	</div>
+	</div>
 	
+			<div class="row">
+				<div class="input-field col s4 offset-s4">
+						比赛地点:<input type="text" name="raceaddress">					
+				</div>
+			</div>	
+			<div class="row">
+				<div class="input-field col s4 offset-s4">
+						比赛介绍:<input type="text" name="introduction" size="70"><br />					
+				</div>
+			</div>		
+				<div class="row">
+				<div class="col s4 offset-s4">
+						比赛时间: <input id="" name="raceopendate" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true})" />				
+				</div>
+			</div>	
+		
+		<input class="waves-effect waves-light btn" type="submit" value="添加">
+		
+		<input type="reset" class="waves-effect waves-light btn" value="清空">
+	</form>
+	</center>
+	</div>
+</script> 
 </body>
+<%@ include file="foot.jsp"%>
+
 </html>

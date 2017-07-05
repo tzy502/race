@@ -11,8 +11,16 @@
 <title>主页</title>
 </head>
 <%@ include file="title.jsp"%>
-<body>
 
+<body>
+  <nav>
+    <div class=" grey lighten-1 nav-wrapper">
+      <div class="col s4 offset-s1">
+      	你所在位置：
+        <a href="index.jsp" class="breadcrumb">首页</a>
+      </div>
+    </div>
+  </nav>
 	<% List<Race> list =new ArrayList<Race>() ;
 	RaceControl rc=new RaceControl();
 	list=rc.load();
@@ -96,7 +104,9 @@
 
 
 
-
+</div>
 
 </body>
+
+<%@ include file="foot.jsp"%>
 </html>

@@ -11,6 +11,16 @@
 <title><%=race.getRacename() %>详情</title>
 </head>
 <body>
+
+  <nav>
+    <div class=" grey lighten-1 nav-wrapper">
+      <div class="col s4 offset-s1">
+      	你所在位置：
+        <a href="index.jsp" class="breadcrumb">首页</a>
+        <a href="#" class="breadcrumb">比赛详情</a>
+      </div>
+    </div>
+  </nav>
 	<%=race.getRacename() %>比赛已经结束
 	比赛记录
 	<%
@@ -18,18 +28,20 @@
 	BattleLogDAO bld=new BattleLogDAO();
 	allbattle=bld.searchbyraceid(race.getRaceid());
 	%>
-	<table border="1">
+		       <div class="row">
+          <div class="col s8  offset-s2">
+	<table class="bordered highlight  responsive-table">
 		<tr>	
-			<td>序号</td>			
-			<td>用户1</td>
-			<td>用户2</td>
-			<td>谁赢</td>
+			<th>序号</th>			
+			<th>用户1</th>
+			<th>用户2</th>
+			<th>谁赢</th>
 		</tr>
 	<%
 	for(int i=1;i<allbattle.size();i++){
 			%>
 			<tr>				
-				<td><%=i+1 %></td>
+				<td><%=i %></td>
 				<td><%=allbattle.get(i).getBattleusername1() %></td>
 				<td><%=allbattle.get(i).getBattleusername2() %></td>
 				<td> 
@@ -49,5 +61,7 @@
 	}
 	
 	%>
+	</table></div></div>
+	<%@ include file="foot.jsp"%>
 </body>
 </html>

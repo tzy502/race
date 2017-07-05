@@ -5,10 +5,22 @@
 
 <html>  
   <head>  
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link href="css/materialize.css" type="text/css" rel="stylesheet"
+	media="screen,projection" />
+<link href="css/materialize.min.css" type="text/css" rel="stylesheet"
+	media="screen,projection" />
+<script src="js/materialize.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="${pageContext.request.contextPath}/js/WdatePicker.js"></script>  
     <title>My97DatePicker日期控件使用</title>  
   </head>  
   <body>  
+
+
     <center>  
         <h2>My97DatePicker日期控件的使用</h2>  
     </center>  
@@ -28,7 +40,17 @@
     <input id="sdate" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true,maxDate:'#F{$dp.$D(\'edate\')}'})" />  
     -  
     <input id="edate" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true,minDate:'#F{$dp.$D(\'sdate\')}',startDate:'#F{$dp.$D(\'sdate\',{d:+1})}'})" /><br><br>  
-       
+      
+      
+         <div class="row">
+      <div class="grid-example col s12"><span class="flow-text">我总是占据所有的宽度 (col s12)</span></div>
+      <div class="grid-example col s12 m6"><span class="flow-text">我占据所有的宽度在手机上 (col s12 m6)</span></div>
+    </div>
+      
+          <div class="row">
+      <div class="col s12"><span class="flow-text">12列全屏大小</span></div>
+      <div class="col s6 offset-s6"><span class="flow-text">6列 (偏移6列)</span></div>
+    </div>
   </body>  
   
 </html> 

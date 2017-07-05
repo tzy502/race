@@ -10,6 +10,7 @@
 <title><%=race.getRacename() %>添加管理员</title>
 </head>
 <body>
+
 	<form action="addmanager.do" method="post">
 	<center>新管理员:<input type="text" name="userid"><br />
 	<center><input type="submit" value="添加">、
