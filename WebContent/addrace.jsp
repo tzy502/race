@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>添加比赛</title>
 </head>
+<link href="sass/components/forms/_select.scss" type="text/css" rel="stylesheet"
+	media="screen,projection" />
 <%@ include file="title.jsp"%>
 <body>
 
@@ -32,7 +34,7 @@
 							赛制:
 		<div class="row">
 	
-		<select name = "racetype" class="browser-default col s4 offset-s4">  	
+		<select name = "racetype" id="select" class="col s4 offset-s4">  	
 		<option value="" disabled selected></option>
 		  <option value="1">单败</option>  
 		  <option value="2">双败</option>  
@@ -66,7 +68,14 @@
 	</form>
 	</center>
 	</div>
-</script> 
+
+	<script type="text/javascript">
+    $(document).ready(function(){  
+    	$('select').material_select();
+    });  
+
+	</script>
+ 
 </body>
 <%@ include file="foot.jsp"%>
 

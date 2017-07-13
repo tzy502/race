@@ -14,6 +14,8 @@
 	media="screen,projection" />
 <link href="css/materialize.min.css" type="text/css" rel="stylesheet"
 	media="screen,projection" />
+	<link href="sass/materialize.scss" type="text/css" rel="stylesheet"
+	media="screen,projection" />
 <script src="js/materialize.min.js"></script>
 <script src="js/materialize.js"></script>
 <script src="js/jquery-3.2.1.js"></script>

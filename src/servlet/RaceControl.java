@@ -182,10 +182,8 @@ public class RaceControl {
 		List<Race> listnoopen =new ArrayList<Race>() ;
 		List<Race> listall =rd.load();
 		for(int i=0;i<listall.size();i++){
-				listnoopen.add(listall.get(i));
-			
-		}
-		
+				listnoopen.add(listall.get(i));		
+		}	
 		return listnoopen;
 	}
 
@@ -238,4 +236,6 @@ public class RaceControl {
 		}			
 		return true;
 	}
+	
+	
 }

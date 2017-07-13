@@ -66,5 +66,6 @@
 	<classpathentry kind="lib" path="D:/java/workspaceforj2ee/race/WebContent/WEB-INF/lib/spring-web-4.0.0.RELEASE.jar"/>
 	<classpathentry kind="lib" path="D:/java/workspaceforj2ee/race/WebContent/WEB-INF/lib/spring-webmvc-4.0.0.RELEASE.jar"/>
 	<classpathentry kind="lib" path="D:/java/workspaceforj2ee/race/WebContent/WEB-INF/lib/spring-webmvc-portlet-3.2.0.RC1.jar"/>
+	<classpathentry kind="lib" path="D:/java/workspaceforj2ee/race/WebContent/WEB-INF/lib/poi-3.6-20091214.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
