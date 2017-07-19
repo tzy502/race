@@ -8,8 +8,13 @@
     http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-3.0.xsd">  
     
  <!-- 自动扫描的包名 -->  
-    <context:component-scan base-package="servlet"/>  
-  
+    <context:component-scan base-package="controller"/>  
+     <context:component-scan base-package="controller">
+        <context:include-filter type="annotation" 
+            expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" 
+            expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
     <!-- 默认的注解映射的支持，自动注册DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter -->  
     <mvc:annotation-driven />  
     

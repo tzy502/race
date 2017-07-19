@@ -57,6 +57,7 @@
 		<mapping resource="model/Battletable.hbm.xml" />
 		<mapping resource="model/BattleManager.hbm.xml" />
 		<mapping resource="model/BattleLog.hbm.xml" />
+		<mapping resource="model/Join.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>
 

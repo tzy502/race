@@ -4,10 +4,10 @@ import java.util.List;
 import DAO.BattleTableDAO;
 import DAO.RaceDAO;
 import DAO.UserDAO;
+import controller.RaceControl;
 import model.BattleTable;
 import model.Race;
 import model.User;
-import servlet.RaceControl;
 
 public class Start {
 

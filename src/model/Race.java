@@ -13,7 +13,14 @@ public class Race implements Serializable{
 	public String raceaddress;
 	public String introduction;
 	public Timestamp  raceopendate;
+	public String boss;
 	
+	public String getBoss() {
+		return boss;
+	}
+	public void setBoss(String boss) {
+		this.boss = boss;
+	}
 	public Timestamp getRaceopendate() {
 		return raceopendate;
 	}
